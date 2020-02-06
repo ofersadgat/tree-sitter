@@ -3,10 +3,12 @@ project(tree_sitter C)
 
 set(CMAKE_C_STANDARD 11)
 
+set(CMAKE_INSTALL_PREFIX tree-sitter)
+
 include_directories(lib/include)
 include_directories(lib/src)
 
-add_library(tree_sitter
+add_library(tree-sitter
         lib/include/tree_sitter/api.h
         lib/include/tree_sitter/parser.h
         lib/src/unicode/ptypes.h
@@ -43,3 +45,7 @@ add_library(tree_sitter
         lib/src/tree_cursor.c
         lib/src/tree_cursor.h
         lib/src/unicode.h)
+
+install(TARGETS tree-sitter
+    DESTINATION ${CMAKE_INSTALL_PREFIX}
+)
